@@ -2,23 +2,27 @@ import React from "react";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
-
+import SecondsCounter from "./SecondsCounter";
+import Digit from "./Digit";
+import Clock from "./Clock";
 //create your first component
-const Home = () => {
+const Home = (props) => {
+	const digitUno = props.seconds % 10;
+	const digitDos = Math.floor(props.seconds /10) % 10;
+	const digitTres = Math.floor(props.seconds /100) % 10;
+	const digitCuatro = Math.floor(props.seconds /1000) % 10;
+	const digitCinco = Math.floor(props.seconds /10000) % 10;
+	const digitSeis = Math.floor(props.seconds /100000) % 10;
 	return (
 		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<Clock/>
+			<SecondsCounter seconds={props.seconds}/>
+			<Digit number={digitUno}/>
+			<Digit number={digitDos}/>
+			<Digit number={digitTres}/>
+			<Digit number={digitCuatro}/>
+			<Digit number={digitCinco}/>
+			<Digit number={digitSeis}/>
 		</div>
 	);
 };
